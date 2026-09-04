@@ -2,6 +2,7 @@
 
 **Appointment Attendance & No-Show Analysis**
 
+---
 
 ## 📌 Project Overview
 
@@ -10,6 +11,24 @@ HealthConnect Appointment Analytics examines **5,000 clinic appointments** to un
 The analysis moves beyond simply measuring the no-show rate by examining factors such as **booking lead time, previous attendance behaviour, reminder activity, distance to the clinic, and appointment type**.
 
 The findings are presented through an interactive Power BI dashboard designed to support faster identification of higher-risk appointment segments.
+
+---
+
+## 🚀 Project Status
+
+**Week 5 — Completed: Initial Analytics & Dashboard Development**
+
+This stage of the project covers:
+
+- Data preparation and quality validation
+- Exploratory analysis of appointment attendance
+- KPI development
+- No-show pattern analysis
+- Business insight generation
+- Power BI dashboard development
+- Initial business recommendations
+
+The next stage will focus on further refinement, deeper segmentation, and potential predictive analysis.
 
 ---
 
@@ -88,6 +107,7 @@ The dashboard provides an interactive view of appointment attendance and highlig
 - Appointment Type Analysis
 - Age & Gender Breakdown
 - Interactive filters and slicers
+
 ---
 
 ## 🛠️ Tools & Technologies
@@ -135,35 +155,17 @@ The findings suggest that HealthConnect could improve attendance by:
 
 ## 📁 Repository Structure
 
-```text
-HealthConnect/
-│
-├── Data/
-│   └── HealthConnect_Appointment_Data
-│
-├── Power BI/
-│   └── HealthConnect_No-Show_Dashboard.pbix
-│
-├── Reports/
-│   └── HealthConnect_Week5_Analytics_Report.docx
-│
-├── Documentation/
-│
-└── README.md
+**HealthConnect/**
+- 📁 **Data/**
+  - HealthConnect_Appointment_Data
+- 📁 **Power BI/**
+  - HealthConnect_No-Show_Dashboard.pbix
+- 📁 **Reports/**
+  - HealthConnect_Week5_Analytics_Report.docx
+- 📁 **Documentation/**
+- 📄 **README.md**
 
-## 🚀 Project Status
+---
 
-**Week 5 — Completed: Initial Analytics & Dashboard Development**
 
-This stage of the project covers:
-
-- Data preparation and quality validation
-- Exploratory analysis of appointment attendance
-- KPI development
-- No-show pattern analysis
-- Business insight generation
-- Power BI dashboard development
-- Initial business recommendations
-
-The next stage will focus on further refinement, deeper segmentation, and potential predictive analysis.
 
