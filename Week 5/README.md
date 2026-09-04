@@ -1,6 +1,6 @@
 # 🏥 HealthConnect Appointment Analytics
 
-**Appointment Attendance & No-Show Analysis | Power BI**
+**Appointment Attendance & No-Show Analysis**
 
 
 ## 📌 Project Overview
@@ -10,24 +10,6 @@ HealthConnect Appointment Analytics examines **5,000 clinic appointments** to un
 The analysis moves beyond simply measuring the no-show rate by examining factors such as **booking lead time, previous attendance behaviour, reminder activity, distance to the clinic, and appointment type**.
 
 The findings are presented through an interactive Power BI dashboard designed to support faster identification of higher-risk appointment segments.
-
----
-
-## 🚀 Project Status
-
-**Week 5 — Completed: Initial Analytics & Dashboard Development**
-
-This stage of the project covers:
-
-- Data preparation and quality validation
-- Exploratory analysis of appointment attendance
-- KPI development
-- No-show pattern analysis
-- Business insight generation
-- Power BI dashboard development
-- Initial business recommendations
-
-The next stage will focus on further refinement, deeper segmentation, and potential predictive analysis.
 
 ---
 
@@ -106,13 +88,6 @@ The dashboard provides an interactive view of appointment attendance and highlig
 - Appointment Type Analysis
 - Age & Gender Breakdown
 - Interactive filters and slicers
-
-### Dashboard Preview
-
-Add your Power BI dashboard screenshot to the repository and display it here:
-
-![HealthConnect Appointment Dashboard](images/healthconnect-dashboard.png)
-
 ---
 
 ## 🛠️ Tools & Technologies
@@ -175,4 +150,20 @@ HealthConnect/
 ├── Documentation/
 │
 └── README.md
+
+## 🚀 Project Status
+
+**Week 5 — Completed: Initial Analytics & Dashboard Development**
+
+This stage of the project covers:
+
+- Data preparation and quality validation
+- Exploratory analysis of appointment attendance
+- KPI development
+- No-show pattern analysis
+- Business insight generation
+- Power BI dashboard development
+- Initial business recommendations
+
+The next stage will focus on further refinement, deeper segmentation, and potential predictive analysis.
 
