@@ -1,61 +1,178 @@
-## Week 5 — HealthConnect Solution Development & Implementation (Data Analytics Track)
+# 🏥 HealthConnect Appointment Analytics
 
-### Objective
-Move from Week 4's planning stage into practical implementation: prepare the data, run exploratory analysis, calculate the five KPIs proposed in Week 4, build an interactive Power BI dashboard, and translate the findings into business recommendations.
+**Appointment Attendance & No-Show Analysis | Power BI**
 
-### Business Questions Answered
-| # | Question |
-|---|---|
-| Q1 | Which patient, booking and appointment characteristics are most strongly associated with no-shows? |
-| Q2 | Does sending a reminder, and the channel used, measurably influence attendance? |
-| Q3 | How much appointment capacity is lost to no-shows and cancellations, and where does it concentrate? |
-| Q4 | Are patients with a prior history of missed appointments more likely to miss future ones? |
-| Q5 | How do distance to the clinic and booking lead time relate to attendance behaviour? |
 
-### KPIs Calculated
-| KPI | Result | Business Question |
-|---|---|---|
-| No-Show Rate | 48.5% | Q1, Q3 |
-| Reminder Effectiveness | SMS 45.75% → No Reminder 51.39% | Q2 |
-| Lost Slot Rate | 53.7% | Q3 |
-| Repeat No-Show Rate | 55.4% (prior no-show) vs. 43.5% (clean history) | Q4 |
-| Distance / Lead-Time Attendance | Lead time 24.8%–60.5%; Distance 46.4%–54.1% | Q5 |
+## 📌 Project Overview
 
-### Key Insights
-1. **Booking lead time is the strongest observed driver** — no-show rate rises from 24.8% (0–3 days) to 60.5% (30+ days), a 35.7-point spread.
-2. **Prior no-show history is a meaningful behavioural signal** — 55.4% vs. 43.5%, an 11.9-point gap.
-3. **Reminder channel shows a modest, actionable association** — SMS (45.75%) outperforms Email, WhatsApp, and no reminder at all (51.39%).
-4. **Distance is associated with attendance** — 46.4% (<5km) rising to 54.1% (15km+).
-5. **Capacity loss is substantial** — 53.7% Lost Slot Rate.
-6. **Appointment type shows smaller but consistent differences** — Follow-up highest at 51.23%, General Consultation lowest at 46.64%.
-7. **Demographic differences (age, gender) are comparatively small** — tested directly on the dashboard, not just assumed; confirms these are not first-line targets.
+HealthConnect Appointment Analytics examines **5,000 clinic appointments** to understand patterns behind missed appointments and identify opportunities to improve attendance.
 
-### Business Recommendations
-| Recommendation | Evidence | Priority |
-|---|---|---|
-| Strengthen confirmation for bookings made 15+ days ahead | 30+ day no-show rate = 60.5% | High |
-| Flag patients with `previous_no_shows > 0` for outreach | 55.4% vs. 43.5% | High |
-| Standardise SMS as the default reminder channel | SMS 45.75% vs. None 51.39% | High |
-| Monitor Lost Slot Rate over time post-intervention | 53.7% baseline | High |
-| Prioritise confirmation calls using lead time, history, distance, and type | Risk concentrated in identifiable segments | Medium |
-| Explore telehealth/access alternatives for 15km+ patients | 15km+ rate = 54.11% | Medium |
-| Review workflow for higher-risk appointment types | Follow-up = 51.23% | Medium |
+The analysis moves beyond simply measuring the no-show rate by examining factors such as **booking lead time, previous attendance behaviour, reminder activity, distance to the clinic, and appointment type**.
 
-### Data Preparation Summary
-The dataset (5,000 records, 18 variables) was checked for completeness, uniqueness, and consistency — no duplicates or logical inconsistencies were found. `reminder_channel` nulls (27.3%) exactly match `reminder_sent = No` and were treated as a meaningful category rather than imputed. `distance_to_clinic_km` (1.8% missing) and `waiting_time_minutes` (1.2% missing) were excluded only from analyses using those specific fields. `waiting_time_minutes` was further flagged as unreliable — it is populated even for No-Show and Cancelled appointments with no meaningful relationship to outcome — and was excluded from driver analysis.
-
-### Dashboard
-An interactive Power BI dashboard (`HealthConnect_No-Show_Dashboard.pbix`) was built using Power Query for data preparation and DAX for all KPIs. It includes 8 KPI cards (including Total Patients and Total Appointments as context metrics), 8 charts across two rows — the four strongest drivers first, followed by supporting detail and demographic checks (age group, gender) — and 5 interactive slicers.
-
-### Cross-Track Collaboration
-Findings were shared with the Data Science track ahead of their Week 5 baseline modelling work: the five KPIs, the ranked list of attendance drivers, and a caution flagging `waiting_time_minutes` as unsuitable for use as a predictive feature. Full detail is documented in the Data Analytics → Data Science Collaboration Report.
-
-### Tools Used
-- **Power Query** — data import, validation, cleaning, derived fields (`distance_band`, `lead_band`, `prior_noshow_flag`)
-- **Power BI** — data modelling, DAX measures, interactive dashboard
-
-### Proposed Focus for Week 6
-Compare descriptive findings against Data Science's baseline model performance and validated feature importance — where the two sources of evidence agree, confidence in prioritisation increases; where they differ, revisit segmentation or feature engineering rather than assuming either source is automatically correct.
+The findings are presented through an interactive Power BI dashboard designed to support faster identification of higher-risk appointment segments.
 
 ---
-Reminder Sent = No
+
+## 🚀 Project Status
+
+**Week 5 — Completed: Initial Analytics & Dashboard Development**
+
+This stage of the project covers:
+
+- Data preparation and quality validation
+- Exploratory analysis of appointment attendance
+- KPI development
+- No-show pattern analysis
+- Business insight generation
+- Power BI dashboard development
+- Initial business recommendations
+
+The next stage will focus on further refinement, deeper segmentation, and potential predictive analysis.
+
+---
+
+## 🎯 Business Focus
+
+The analysis addresses four key questions:
+
+- How significant is the clinic's no-show problem?
+- Which appointment characteristics are most associated with missed appointments?
+- Do reminders appear to improve attendance?
+- Which patient or appointment groups may require additional intervention?
+
+---
+
+## 📊 Dataset
+
+| Metric | Value |
+|---|---:|
+| Appointments | **5,000** |
+| Unique Patients | **1,696** |
+| Variables | **18** |
+| Overall No-Show Rate | **48.5%** |
+| Lost Slot Rate | **53.7%** |
+
+---
+
+## 🔎 Key Findings
+
+### 1. Booking Lead Time is the Strongest Signal
+
+No-show rates increased significantly as the time between booking and appointment increased.
+
+| Booking Lead Time | No-Show Rate |
+|---|---:|
+| 0–3 days | 24.8% |
+| 4–14 days | 32.6% |
+| 15–30 days | 43.2% |
+| 30+ days | **60.5%** |
+
+There is a **35.7 percentage-point difference** between the shortest and longest lead-time groups.
+
+### 2. Previous No-Shows Matter
+
+Patients with a previous no-show had a **55.4%** no-show rate compared with **43.5%** among patients without a previous no-show.
+
+This suggests that previous attendance behaviour can be useful when identifying appointments that may require additional follow-up.
+
+### 3. Reminders Show a Moderate Effect
+
+| Reminder Status | No-Show Rate |
+|---|---:|
+| Reminder sent | 47.4% |
+| No reminder | 51.4% |
+
+Among reminder channels, SMS recorded the lowest no-show rate at **45.8%**.
+
+### 4. Distance Has a Secondary Effect
+
+Patients living **15 km+** from the clinic had a **54.1%** no-show rate compared with **46.4%** among those living less than 5 km away.
+
+---
+
+## 📈 Power BI Dashboard
+
+The dashboard provides an interactive view of appointment attendance and highlights the strongest no-show patterns.
+
+### Dashboard Includes
+
+- No-Show Rate
+- Lost Slot Rate
+- Repeat No-Show Rate
+- Reminder Effectiveness
+- No-Show Rate by Lead Time
+- No-Show Rate by Distance
+- Previous No-Show Analysis
+- Appointment Type Analysis
+- Age & Gender Breakdown
+- Interactive filters and slicers
+
+### Dashboard Preview
+
+Add your Power BI dashboard screenshot to the repository and display it here:
+
+![HealthConnect Appointment Dashboard](images/healthconnect-dashboard.png)
+
+---
+
+## 🛠️ Tools & Technologies
+
+### Data Preparation
+
+- Microsoft Excel
+- Power Query
+
+### Analytics & Visualisation
+
+- Power BI
+- DAX
+
+### Documentation & Version Control
+
+- GitHub
+
+---
+
+## 💡 Business Recommendations
+
+The findings suggest that HealthConnect could improve attendance by:
+
+1. **Strengthening confirmation for long-lead appointments**, particularly those booked 15+ days in advance.
+
+2. **Flagging patients with previous no-shows** for additional confirmation.
+
+3. **Prioritising effective reminder channels**, with SMS showing the lowest no-show rate in this dataset.
+
+4. **Paying closer attention to Follow-up appointments**, which recorded the highest no-show rate among appointment types.
+
+5. **Exploring access solutions** for patients living farther from the clinic, including telehealth where appropriate.
+
+---
+
+## ⚠️ Limitations
+
+- The dataset is synthetic and is intended for analytics practice.
+- `waiting_time_minutes` was excluded from the main driver analysis because of data-quality concerns.
+- The analysis focuses primarily on relationships between individual variables.
+- No predictive modelling or statistical significance testing was performed at this stage.
+
+---
+
+## 📁 Repository Structure
+
+```text
+HealthConnect/
+│
+├── Data/
+│   └── HealthConnect_Appointment_Data
+│
+├── Power BI/
+│   └── HealthConnect_No-Show_Dashboard.pbix
+│
+├── Reports/
+│   └── HealthConnect_Week5_Analytics_Report.docx
+│
+├── Documentation/
+│
+└── README.md
+
