@@ -114,7 +114,7 @@ The dashboard provides an interactive view of appointment attendance and highlig
 
 ### Data Preparation
 
-- Microsoft Excel
+- Power BI
 - Power Query
 
 ### Analytics & Visualisation
