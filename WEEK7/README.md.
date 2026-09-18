@@ -1,1 +1,266 @@
+# HealthConnect Clinic – Week 7 Data Analytics
 
+## Project Overview
+
+**HealthConnect Clinic** is a synthetic healthcare appointment analytics project developed as part of the **AnalystLab Africa Experience Lab Internship Programme**.
+
+The project explores missed patient appointments and uses data analytics to identify patterns associated with appointment no-shows. The analysis is designed to support better appointment management, patient engagement and healthcare service planning.
+
+Week 7 focused on **testing, validation and refinement** of the analytical work developed in the previous weeks.
+
+---
+
+## Project Question
+
+**How can HealthConnect Clinic use data and AI to reduce missed appointments and improve the patient support experience?**
+
+---
+
+## Week 7 Focus
+
+Week 7 moved the project from advanced analytical development into **systematic testing, validation and refinement**.
+
+The work focused on:
+
+- Validating the core dashboard KPIs
+- Testing dashboard filters and slicers
+- Reviewing analytical outputs against the underlying dataset
+- Identifying and resolving a KPI calculation issue
+- Re-testing corrected results
+- Reassessing key no-show patterns
+- Refining dashboard layout and usability
+- Reviewing analytical limitations
+- Carrying validated findings into the wider HealthConnect project
+
+The emphasis during this stage was on ensuring that the dashboard calculations and analytical conclusions were consistent before final project integration.
+
+---
+
+## Week 6 → Week 7 Progression
+
+Week 6 introduced advanced no-show analysis using factors including:
+
+- Booking lead time
+- Previous no-show history
+- Reminder channels
+- Appointment type
+- Distance to the clinic
+
+Week 7 built on this work by testing the resulting dashboard, validating its calculations and reviewing whether the previously identified patterns remained consistent after refinement.
+
+One of the key findings carried forward was the relationship between **booking lead time and previous no-show history**, which was further examined during Week 7.
+
+---
+
+## Dataset
+
+The HealthConnect dataset contains **5,000 appointment records** representing **1,696 unique patients**.
+
+The overall observed no-show rate is **48.5%**.
+
+The dataset is synthetic and was created for analytical learning and portfolio development.
+
+---
+
+## Dashboard
+
+The Week 7 Power BI dashboard is titled:
+
+**HEALTHCONNECT | ADVANCED NO-SHOW ANALYSIS**
+
+The dashboard presents four core KPIs:
+
+| KPI | Result |
+|---|---:|
+| Overall No-Show Rate | **48.5%** |
+| 30+ Day No-Show Rate | **60.5%** |
+| Repeat No-Show Rate | **55.4%** |
+| Lost Slot Rate | **53.7%** |
+
+### Interactive Analysis
+
+The dashboard uses interactive slicers for:
+
+- Lead Time
+- Previous No-Show History
+- Reminder Channel
+- Appointment Type
+
+These allow the no-show patterns to be explored across different appointment and patient-history segments.
+
+---
+
+## KPI Validation and Refinement
+
+During Week 7, the four core KPIs were independently checked against the underlying dataset.
+
+The validated results were:
+
+- Overall No-Show Rate: **48.5%**
+- 30+ Day No-Show Rate: **60.5%**
+- Repeat No-Show Rate: **55.4%**
+- Lost Slot Rate: **53.7%**
+
+A filter-context issue was identified with the **Repeat No-Show Rate** measure.
+
+When the **No prior no-show** category was selected, the KPI initially continued to display **55.4%** instead of responding to the selected filter.
+
+The underlying issue was traced to the original DAX logic, which explicitly filtered appointments using `previous_no_shows > 0`.
+
+The measure was subsequently refined to recognise the selected **Previous No-Show History** context.
+
+After refinement, the no-prior-no-show selection correctly returned:
+
+- No-Show Rate: **43.5%**
+- 30+ Day No-Show Rate: **55.2%**
+- Repeat No-Show Rate: **0.0%**
+- Lost Slot Rate: **49.5%**
+
+The corrected calculation was re-tested successfully.
+
+---
+
+## Key Analytical Findings
+
+### Booking Lead Time
+
+Booking lead time remained the clearest observed pattern in the analysis.
+
+The no-show rate increased across the lead-time bands:
+
+| Booking Lead Time | No-Show Rate |
+|---|---:|
+| 0–3 days | **24.8%** |
+| 4–14 days | **32.6%** |
+| 15–30 days | **43.2%** |
+| 30+ days | **60.5%** |
+
+This indicates a substantial difference in observed no-show rates across booking lead-time groups, with the 30+ day segment requiring further attention within the analytical context.
+
+### Previous No-Show History
+
+Previous attendance behaviour also showed an observed relationship with appointment no-shows.
+
+| Previous No-Show History | No-Show Rate |
+|---|---:|
+| Has prior no-show | **55.4%** |
+| No prior no-show | **43.5%** |
+
+This provided an additional segmentation variable for understanding appointment attendance patterns.
+
+### Lead Time × Previous No-Show History
+
+A particularly notable segment was the combination of **30+ day booking lead time and previous no-show history**.
+
+Within the 30+ day group:
+
+- Previous no-show history: **67.9% no-show rate**
+- No previous no-show history: **55.2% no-show rate**
+
+The overall no-show baseline was **48.5%**.
+
+This interaction was revalidated during Week 7 and remained analytically distinct.
+
+The finding was carried forward as a potential **Lead Time × Previous No-Show interaction feature** for further predictive analysis.
+
+---
+
+## Dashboard Refinements
+
+The Week 7 dashboard was refined to improve clarity, usability and interactive exploration.
+
+Key changes included:
+
+- Rearrangement of dashboard components
+- Addition of interactive slicers
+- Removal of the static Top 3 Insights section
+- Clarification of the second KPI as **30+ Day No-Show Rate**
+- Standardisation of lead-time labels
+- Improved filtering and analytical exploration
+
+The removal of the static insight section was a **layout and usability decision**, rather than a change to the underlying analytical findings.
+
+---
+
+## Cross-Track Collaboration
+
+The Analytics–Data Science collaboration established during Week 6 was carried forward into Week 7.
+
+The Data Analytics track shared the finding that **booking lead time and previous no-show history may provide additional information when considered together**.
+
+Data Science had previously identified the combination as a potential **Lead Time × Previous No-Show interaction feature** for predictive-model testing.
+
+During Week 7, the Data Analytics side revalidated the underlying segments and confirmed that the observed relationship remained supported by the dashboard analysis.
+
+No additional Data Science model-performance result was available during the Week 7 testing period.
+
+Therefore, this project does not claim that the interaction feature improved predictive performance or produced a better model.
+
+The remaining step is for the Data Science track to evaluate the interaction using its modelling and evaluation process.
+
+---
+
+## Business Relevance
+
+The analysis provides several areas that can support further investigation by HealthConnect Clinic:
+
+- Longer booking lead times can be monitored as an appointment attendance risk segment.
+- Previous no-show history can be used as an additional segmentation variable.
+- The combination of long lead time and previous no-show history can be considered for further predictive analysis.
+- Appointment and reminder patterns can be monitored through interactive dashboard analysis.
+- The findings can support future development of targeted appointment confirmation and patient-support strategies.
+
+These findings represent **observed associations in the dataset and should not be interpreted as causal relationships**.
+
+---
+
+## Limitations
+
+The HealthConnect dataset is synthetic and intended for analytical learning and practice.
+
+Key limitations include:
+
+- Some distance values are missing.
+- Some waiting-time values are missing.
+- Waiting-time data may not be reliable for no-show analysis because the field is populated for some appointments where patients did not attend.
+- Reminder-channel differences are observational and do not establish that a particular channel causes or prevents no-shows.
+- Distance does not demonstrate a simple monotonic relationship with no-show rates.
+- The analysis does not establish causal relationships.
+- Further predictive evaluation of the Lead Time × Previous No-Show interaction depends on Data Science model testing.
+
+---
+
+## Week 8 Readiness
+
+The Week 7 work provides a validated analytical foundation for the next stage of the HealthConnect project.
+
+The project is ready to move into:
+
+- Final integration of validated dashboard outputs
+- Continued evaluation of the Lead Time × Previous No-Show interaction
+- Integration of validated analytics findings into the wider HealthConnect solution
+- Further dashboard usability refinement
+- Final project documentation and presentation preparation
+
+---
+
+## Tools Used
+
+- **Power BI** – Dashboard development and interactive analysis
+- **Power Query** – Data preparation and transformation
+- **DAX** – Measures, KPI calculations and analytical logic
+- **Microsoft Word** – Project documentation
+- **GitHub** – Project version control and portfolio documentation
+- **Slack** – Cross-track communication
+
+---
+
+## Project Status
+
+**Week 7 – Testing, Validation and Refinement Completed**
+
+The core analytical outputs were validated, the identified **Repeat No-Show Rate** filter-context issue was corrected and successfully re-tested, and the dashboard was refined for improved usability.
+
+The key analytical finding around **booking lead time and previous no-show history** was also revalidated and documented for continued cross-track use.
+
+The remaining project work includes further Data Science evaluation of the proposed interaction feature, final integration and Week 8 presentation preparation.
