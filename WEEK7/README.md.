@@ -9,13 +9,11 @@ The project explores missed patient appointments and uses data analytics to iden
 
 Week 7 focused on **testing, validation and refinement** of the analytical work developed in the previous weeks.
 
----
 
 ## Project Question
 
 **How can HealthConnect Clinic use data and AI to reduce missed appointments and improve the patient support experience?**
 
----
 
 ## Week 7 Focus
 
@@ -35,7 +33,6 @@ The work focused on:
 
 The emphasis during this stage was on ensuring that the dashboard calculations and analytical conclusions were consistent before final project integration.
 
----
 
 ## Week 6 → Week 7 Progression
 
@@ -51,7 +48,6 @@ Week 7 built on this work by testing the resulting dashboard, validating its cal
 
 One of the key findings carried forward was the relationship between **booking lead time and previous no-show history**, which was further examined during Week 7.
 
----
 
 ## Dataset
 
@@ -61,7 +57,6 @@ The overall observed no-show rate is **48.5%**.
 
 The dataset is synthetic and was created for analytical learning and portfolio development.
 
----
 
 ## Dashboard
 
@@ -89,7 +84,6 @@ The dashboard uses interactive slicers for:
 
 These allow the no-show patterns to be explored across different appointment and patient-history segments.
 
----
 
 ## KPI Validation and Refinement
 
@@ -119,7 +113,6 @@ After refinement, the no-prior-no-show selection correctly returned:
 
 The corrected calculation was re-tested successfully.
 
----
 
 ## Key Analytical Findings
 
@@ -164,7 +157,6 @@ This interaction was revalidated during Week 7 and remained analytically distinc
 
 The finding was carried forward as a potential **Lead Time × Previous No-Show interaction feature** for further predictive analysis.
 
----
 
 ## Dashboard Refinements
 
@@ -181,7 +173,6 @@ Key changes included:
 
 The removal of the static insight section was a **layout and usability decision**, rather than a change to the underlying analytical findings.
 
----
 
 ## Cross-Track Collaboration
 
@@ -199,8 +190,6 @@ Therefore, this project does not claim that the interaction feature improved pre
 
 The remaining step is for the Data Science track to evaluate the interaction using its modelling and evaluation process.
 
----
-
 ## Business Relevance
 
 The analysis provides several areas that can support further investigation by HealthConnect Clinic:
@@ -213,7 +202,6 @@ The analysis provides several areas that can support further investigation by He
 
 These findings represent **observed associations in the dataset and should not be interpreted as causal relationships**.
 
----
 
 ## Limitations
 
@@ -229,7 +217,6 @@ Key limitations include:
 - The analysis does not establish causal relationships.
 - Further predictive evaluation of the Lead Time × Previous No-Show interaction depends on Data Science model testing.
 
----
 
 ## Week 8 Readiness
 
@@ -243,7 +230,6 @@ The project is ready to move into:
 - Further dashboard usability refinement
 - Final project documentation and presentation preparation
 
----
 
 ## Tools Used
 
@@ -254,7 +240,6 @@ The project is ready to move into:
 - **GitHub** – Project version control and portfolio documentation
 - **Slack** – Cross-track communication
 
----
 
 ## Project Status
 
