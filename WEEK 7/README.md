@@ -157,8 +157,6 @@ Detailed testing evidence is maintained separately and includes:
 - Power BI
 - Power Query
 - DAX
-- Python
-- GitHub
 
 ---
 
