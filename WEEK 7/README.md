@@ -1,8 +1,8 @@
-# HealthConnect Clinic — Data Analytics Track
+# HealthConnect Clinic — Data Analytics Track (Week 7)
 
 **AnalystLab Africa Experience Lab Internship Programme**
 Project: *Improving Patient Appointment Attendance and Healthcare Support Using Data and AI*
-Track: Data Analytics | Current Status: Week 7 — Testing, Refinement & Validation
+Track: Data Analytics | Status: Week 7 — Testing, Refinement & Validation
 
 ---
 
@@ -10,11 +10,7 @@ Track: Data Analytics | Current Status: Week 7 — Testing, Refinement & Validat
 
 HealthConnect Clinic is a fictional healthcare provider seeking to reduce missed appointments, improve appointment attendance, make better use of appointment slots, and provide more effective administrative support to patients.
 
-This repository holds the Data Analytics track contribution to the multi-track HealthConnect Experience Lab, built and refined across Weeks 4–7 of the programme using **Power Query** and **Power BI**.
-
-The central question this track investigates:
-
-> How does booking lead time relate to previous no-shows, reminder channel, appointment type, and distance to the clinic — and what does that mean for reducing missed appointments?
+Week 7 moved the Data Analytics track from development and integration into systematic testing, refinement, re-testing and validation. The existing HealthConnect appointment dataset, Power BI model and prior findings were retained and tested rather than rebuilt.
 
 ---
 
@@ -23,24 +19,33 @@ The central question this track investigates:
 - data/
   - HealthConnect_Appointment_Data.csv — Approved project dataset (5,000 appointments)
 - dashboard/
-  - HealthConnect_No-Show_Dashboard.pbix — Power BI dashboard (Week 5–7)
+  - HealthConnect_No-Show_Dashboard.pbix — Refined Power BI dashboard
 - reports/
-  - Week4_Initial_Analysis_Document.docx
-  - Week4_Project_Summary.docx
-  - Week5_Analytics_Report.docx
-  - Week5_Project_Summary.docx
-  - Week6_Advanced_Analytics_Report.docx
   - Week7_Analytics_Testing_Refinement_Report.docx
   - Week7_Testing_Evidence_Pack.docx
   - Week7_Cross_Track_Testing_Validation.docx
   - Week7_Project_Summary.docx
 - README.md
 
-*(Adjust the paths above to match your actual folder names/casing if they differ.)*
+---
+
+## Testing Focus
+
+Week 7 validated KPI calculations, checked dashboard values against the underlying data, tested slicers and filter behaviour, investigated inconsistent results, refined identified weaknesses, re-tested the refined outputs, and reassessed key findings across relevant segments.
+
+| Area | Work Completed | Outcome |
+|---|---|---|
+| Core KPIs | Overall No-Show Rate; 30+ Day No-Show Rate; Repeat No-Show Rate; Lost Slot Rate | Validated |
+| Lead time | 0–3, 4–14, 15–30 and 30+ day segments | Validated |
+| Previous no-show history | Has prior no-show / No prior no-show filters | Validated after refinement |
+| Reminder channel | Email, None, SMS and WhatsApp | Validated |
+| Appointment type | Four appointment-type segments | Validated |
+| Dashboard functionality | Slicers, KPI labels, layout and filter behaviour | Refined and re-tested |
+| Distance to clinic | Category sort order in the Lead Time × Distance chart | Refined and re-tested |
 
 ---
 
-## Key KPIs (Current, Week 7)
+## Validated Key KPIs
 
 | KPI | Value | Definition |
 |---|---|---|
@@ -49,48 +54,40 @@ The central question this track investigates:
 | Repeat No-Show Rate | 55.4% | No-show rate among appointments with prior no-show history |
 | Lost Slot Rate | 53.7% | (No-shows + Cancellations) ÷ total appointments |
 
-## Headline Findings
+## Validated Key Findings
 
-- **Booking lead time is the strongest observed pattern**: no-show rate rises from 24.8% (0–3 days) to 60.5% (30+ days).
-- **Previous no-show history compounds the effect**: within the 30+ day group, patients with prior no-shows reach 67.9%, vs. 55.2% for those without.
-- These are **observed associations, not causal claims** — the dataset is fictional/synthetic and intended for learning purposes.
-
----
-
-## Dashboard
-
-Open `HealthConnect_No-Show_Dashboard.pbix` in Power BI Desktop. The dashboard includes:
-
-- Four headline KPI cards
-- Lead Time × Previous No-Show History breakdown (table + segment risk table)
-- Lead Time × Reminder Channel, × Appointment Type, × Distance to Clinic (charts)
-- Interactive slicers: Lead Time, Previous No-Show History, Reminder Channel, Appointment Type
+- **Booking lead time** is the clearest observed segmentation pattern, rising from 24.8% (0–3 days) to 60.5% (30+ days).
+- **30+ days + prior no-show**: 67.9% — the highest observed combined segment; association, not causation.
+- **30+ days + no prior no-show**: 55.2% — long lead time remains elevated even without prior no-show history.
+- **Lost Slot Rate** (53.7%) shows no-shows and cancellations together represent substantial scheduled-capacity loss.
+- These are observed associations, not causal claims — the dataset is fictional/synthetic and intended for learning purposes.
 
 ---
 
-## Week-by-Week Progress
+## Issues Identified and Resolved
 
-| Week | Focus | Output |
-|---|---|---|
-| 4 | Problem understanding, resource review, planning | Initial Analysis Document, Project Summary |
-| 5 | Initial EDA, KPI development, first dashboard | Analytics Report, Project Summary, interactive dashboard |
-| 6 | Advanced segmentation, cross-track integration | Advanced Analytics Report |
-| 7 | Systematic testing, refinement, validation | Testing & Refinement Report, Evidence Pack, Cross-Track Validation, Project Summary |
+1. **Repeat No-Show KPI slicer-response issue** — the DAX measure explicitly filtered on the "Has prior no-show" category and did not respond to the "No prior no-show" slicer selection, remaining fixed at 55.4%. The measure was refined to respect the selected history context. Re-tested: now correctly returns 0.0% for "No prior no-show."
+2. **Distance-to-clinic category sort order** — the chart legend displayed distance bands out of logical order (`<5km, 15km+, 5-15km, Unknown`). A custom sort column was applied in Power Query so the order now reads `<5km, 5-15km, 15km+, Unknown`. Re-tested: underlying values unchanged, order corrected.
+3. **0–3 days Lost Slot Rate** — re-checked against the raw dataset (31.45%, rounds to 31.4%); confirmed to match the dashboard exactly, no discrepancy found.
 
-### Week 7 Testing Summary
+Full before/after evidence and screenshots are documented in `Week7_Testing_Evidence_Pack.docx`.
 
-Week 7 validated all core KPIs and segment breakdowns against the raw dataset, and identified and resolved two issues:
+---
 
-1. **Repeat No-Show KPI slicer-response bug** — the DAX measure ignored the "No prior no-show" slicer selection and always returned 55.4%. Refined and re-tested; now correctly returns 0.0% for that selection.
-2. **Distance-to-clinic category sort order** — the chart legend displayed distance bands out of logical order. Corrected via a custom sort column in Power Query; re-tested with values unchanged.
+## Dashboard Refinements
 
-Full test records, before/after evidence, and screenshots are in `Week7_Testing_Evidence_Pack.docx`.
+- Rearranged the dashboard to improve analytical flow and make space for interactive analysis.
+- Removed the static Top 3 Insights panel to create space for slicers; underlying findings retained in documentation.
+- Added slicers for Lead Time, Previous No-Show History, Reminder Channel and Appointment Type.
+- Renamed the second KPI to "30+ Day No-Show Rate" to clarify its segment-specific meaning.
+- Standardised user-facing labels and lead-time categories.
+- Corrected the distance-to-clinic category sort order.
 
 ---
 
 ## Cross-Track Collaboration
 
-The Lead Time × Previous No-Show History finding (67.9% vs. 55.2% within the 30+ day segment) was shared with the **Data Science track** as a candidate interaction feature for predictive modelling. See `Week7_Cross_Track_Testing_Validation.docx` for the full handoff record.
+The Lead Time × Previous No-Show History finding (67.9% vs. 55.2% within the 30+ day segment) was shared with the **Data Science track** as a candidate interaction feature for predictive modelling. Analytics-side validation is complete; Data Science's model-performance evaluation remains an open dependency. Full handoff record in `Week7_Cross_Track_Testing_Validation.docx`.
 
 ---
 
@@ -100,6 +97,15 @@ The Lead Time × Previous No-Show History finding (67.9% vs. 55.2% within the 30
 - Findings describe observed associations, not causal relationships.
 - Distance and waiting-time fields contain some missing values.
 - Reminder-channel differences are descriptive and should not be read as proof of causal effect.
+- The Data Science interaction feature remains a candidate for predictive testing.
+
+---
+
+## Week 8 Readiness
+
+- Refined Power BI dashboard and validated KPI logic, including the corrected distance sort order, are the current Analytics version.
+- Validated findings and documented limitations carry forward into final integration.
+- Status of the Data Science interaction-feature test to be completed/documented before final presentation.
 
 ---
 
